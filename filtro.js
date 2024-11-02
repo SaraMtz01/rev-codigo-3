@@ -10,9 +10,10 @@ const productos = [
 
 
 //Se cambia el nombre de las variables para mejorar la legibilidad del texto
-const listaProductos = document.getElementById("lista-de-productos"); //Se cambia de name a ById
+const listaProductos = document.getElementById("lista-de-productos"); //Se cambia de name a getElementById
 const textoIngresado = document.querySelector('input'); //Se elimina el punto antes de input, pues se trata de una etiqueta
 
+const displayProductos=()=>{
 for (let i = 0; i < productos.length; i++) {
   var documentReference2 = document.createElement("div")
   documentReference2.classList.add("producto")
@@ -29,13 +30,14 @@ for (let i = 0; i < productos.length; i++) {
 
   listaProductos.appendChild(documentReference2)
 }
+}
 
 displayProductos(productos)
 const botonDeFiltro = document.querySelector("button");
 
 botonDeFiltro.onclick = function() {
   while (listaProductos.firstChild) {
-    listaProductos.removeChild(li.firstChild);
+    listaProductos.removeChild(listaProductos.firstChild);
   }
 
   const texto = textoIngresado.value;
@@ -62,4 +64,4 @@ botonDeFiltro.onclick = function() {
 
 const filtrado = (productos = [], texto) => {
   return productos.filter(item => item.tipo.includes(texto) || item.color.includes(texto));
-}  
+}   
