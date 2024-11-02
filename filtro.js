@@ -8,41 +8,43 @@ const productos = [
   {nombre: "Zapato rojo", tipo: "zapato", color: "rojo", img: "./zapato-rojo.jpg"}
 ]
 
-const li = document.getElementsById("lista-de-productos"); //Se cambia de name a ById
-const $i = document.querySelector('.input');
+
+//Se cambia el nombre de las variables para mejorar la legibilidad del texto
+const listaProductos = document.getElementById("lista-de-productos"); //Se cambia de name a ById
+const textoIngresado = document.querySelector('input'); //Se elimina el punto antes de input, pues se trata de una etiqueta
 
 for (let i = 0; i < productos.length; i++) {
-  var d = document.createElement("div")
-  d.classList.add("producto")
+  var documentReference2 = document.createElement("div")
+  documentReference2.classList.add("producto")
 
-  var ti = document.createElement("p")
-  ti.classList.add("titulo")
-  ti.textContent = productos[i].nombre
+  const tituloProductos = document.createElement("p")
+  tituloProductos.classList.add("titulo")
+  tituloProductos.textContent = productos[i].nombre
   
   var imagen = document.createElement("img");
   imagen.setAttribute('src', productos[i].img);
 
-  d.appendChild(ti)
-  d.appendChild(imagen)
+  documentReference2.appendChild(tituloProductos)
+  documentReference2.appendChild(imagen)
 
-  li.appendChild(d)
+  listaProductos.appendChild(documentReference2)
 }
 
 displayProductos(productos)
 const botonDeFiltro = document.querySelector("button");
 
 botonDeFiltro.onclick = function() {
-  while (li.firstChild) {
-    li.removeChild(li.firstChild);
+  while (listaProductos.firstChild) {
+    listaProductos.removeChild(li.firstChild);
   }
 
-  const texto = $i.value;
+  const texto = textoIngresado.value;
   console.log(texto);
   const productosFiltrados = filtrado(productos, texto );
 
   for (let i = 0; i < productosFiltrados.length; i++) {
-    var d = document.createElement("div")
-    d.classList.add("producto")
+    var documentReference3 = document.createElement("div")
+    documentReference3.classList.add("producto")
   
     var ti = document.createElement("p")
     ti.classList.add("titulo")
@@ -51,10 +53,10 @@ botonDeFiltro.onclick = function() {
     var imagen = document.createElement("img");
     imagen.setAttribute('src', productosFiltrados[i].img);
   
-    d.appendChild(ti)
-    d.appendChild(imagen)
+    documentReference3.appendChild(ti)
+    documentReference3.appendChild(imagen)
   
-    li.appendChild(d)
+    listaProductos.appendChild(documentReference3)
   }
 }
 
